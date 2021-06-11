@@ -118,7 +118,6 @@ jobs:
       working-directory: /workdir
       run: |
         git clone -b "$REPO_BRANCH" --single-branch "$REPO_URL" openwrt
-        source $GITHUB_WORKSPACE/build/common/common.sh && Diy_custom
         cd openwrt
         ./scripts/feeds clean && ./scripts/feeds update -a > /dev/null 2>&1
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
