@@ -165,7 +165,7 @@ jobs:
         if [ -n "$(ls -A "${PATH1}/files" 2>/dev/null)" ]; then
           cp -Rf "${PATH1}/files" "${Home}" && chmod -R +x ${Home}/files
         fi
-        if [ -n "$(ls -A "${Home}"/build/common/OFFICIAL/devices/patches" 2>/dev/null)" ]; then
+        if [[ "${REPO_BRANCH}" =~ "openwrt-21.02" ]]; then
           find "${Home}/build/common/OFFICIAL/devices/patches" -type f ! -path '${Home}/build/common/OFFICIAL/devices/patches/china_mirrors.patch' -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 -E --forward --no-backup-if-mismatch"
         fi
         if [ -n "$(ls -A "${PATH1}/patches" 2>/dev/null)" ]; then
