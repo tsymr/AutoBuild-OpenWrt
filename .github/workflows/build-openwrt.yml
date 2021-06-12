@@ -151,9 +151,9 @@ jobs:
           cp -Rf "${Home}"/build/common/PROJECT/patches/* "${PATH1}/patches"
         elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
           source "${PATH1}/common.sh" && Diy_2102
-          cp -Rf "${Home}"/build/common/OFFICIAL/files "${Home}"
-          cp -Rf "${Home}"/build/common/OFFICIAL/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/OFFICIAL/patches/* "${PATH1}/patches"
+          cp -Rf "${Home}"/build/common/SPIRIT/files "${Home}"
+          cp -Rf "${Home}"/build/common/SPIRIT/diy/* "${Home}"
+          cp -Rf "${Home}"/build/common/SPIRIT/patches/* "${PATH1}/patches"
         fi
         source "${PATH1}/common.sh" && Diy_all
         /bin/bash "${PATH1}/$DIY_PART_SH"
