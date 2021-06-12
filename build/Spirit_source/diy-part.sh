@@ -4,8 +4,8 @@
 
 sed -i 's/=auto/=zh_cn/g' $ZZZ
 sed -i "/uci commit luci/a\uci commit system" $ZZZ
-sed -i "/uci commit system/i\uci set system.@system[0].timezone=CST-8" $ZZZ                              # IPv4 地址(openwrt后台地址)
-sed -i "/uci commit system/i\uci set system.@system[0].zonename=Asia/Shanghai" $ZZZ 
+sed -i "/uci commit system/i\uci set system.@system[0].timezone=CST-8" $ZZZ
+sed -i "/uci commit system/i\uci set system.@system[0].zonename=Asia/Shanghai" $ZZZ
 
 
 sed -i "/uci commit fstab/a\uci commit network" $ZZZ
