@@ -15,7 +15,7 @@
 ## 编译教程：
 ### - 以下的说明教程都是在我另外的仓库的，查看说明时候就跳转到另外仓库了，浏览器回退就会回来，别拉取到我说明的仓库，注意了！
 #
-- 1、`注册及登录github账号`《[注册链接](https://github.com)》
+- 1、`注册及登录github账号，github已筑墙,请自备梯子`《[注册链接](https://github.com)》
 #
 - 2、`拉取我的仓库到你的仓库`《[拉取仓库教程](https://github.com/danshui-git/shuoming/blob/master/1%E6%8B%89%E5%8F%96%E4%BB%93%E5%BA%93.md)》
 #
@@ -23,7 +23,7 @@
 #
 - 4、`选择要编译的源码跟机型`《[教程](https://github.com/danshui-git/shuoming/blob/master/%E9%80%89%E6%8B%A9%E6%9C%BA%E5%9E%8B.md)》
 #
-- 5、设置好要编译的机型后，在build文件夹--你要编译的对应机型文件夹（跟第4步修改的机型一样的文件夹）里的【diy-2.sh】修改登录IP，好等编译完成安装后顺利登录openwrt《[修改ip教程](https://github.com/danshui-git/shuoming/blob/master/ip.md)》
+- 5、设置好要编译的机型后，在build文件夹--你要编译的对应机型文件夹（跟第4步修改的机型一样的文件夹）里的【diy-part.sh】修改登录IP，好等编译完成安装后顺利登录openwrt《[修改ip教程](https://github.com/danshui-git/shuoming/blob/master/ip.md)》
 #
 - 6、修改好ip后，根据个人需求打开或者关闭各功能，开关控制在build文件夹--你要编译的对应机型文件夹（跟第4步修改的机型一样的文件夹）里的【settings.ini】设置《[各开关控制教程](https://github.com/danshui-git/shuoming/blob/master/kaiguan.md)》
 #
@@ -35,8 +35,8 @@
 #
 - 10、`完成编译，下载固件`《[固件下载教程](https://github.com/danshui-git/shuoming/blob/master/4%E5%9B%BA%E4%BB%B6%E4%B8%8B%E8%BD%BD.md)》
 #
-- 11、`安装固件`，安装固件时出现“Please press Enter to activate this console”就表示安装好了，出现这个就不会跑码的，稍等1分钟就可以进入网页了
-- 如果会跑码，就耐心等待跑码完成，应该不需要1分钟就能跑完的
+- 11、`安装固件`，安装固件时出现“Please press Enter to activate this console”就表示安装好了，出现这个就不会跑码的，稍等2-3分钟就可以在浏览器输入IP进入openwrt后台了
+- 如果会跑码，就耐心等待跑码完成，大概2-3分钟就能跑完的
 #
 - 12、`保存编译配置`，编译固件之前打开‘`SSH连接服器配置固件`’跟‘`上传【.config】配置文件在github空间`’，编译的时候SSH连接服务器修改好插件跟其他应用，编译成功后会有固件跟.config配置文件的，下载.config配置文件后，解压得到一个【config.buildinfo】文件，用记事本打开，把里面的内容都复制，然后覆盖对应机型.config里面原来的内容，这样就会保存你的配置了，下次编译在不修改配置的情况下就不需要再次打开SSH了，那就可以使用定时编译功能，或者手机启动编译，本地提取.config配置文件覆盖进去也可以，本地提取的时候要注意所有插件都要跟云编译脚本同步的
 #
@@ -54,7 +54,6 @@
 《[Telegram机器人推送信息教程](https://github.com/danshui-git/shuoming/blob/master/bot.md)》
 《[编译时设置overlay空间容量](https://github.com/danshui-git/shuoming/blob/master/overlay.md)》
 #
-- 14、建议准备梯子一把，虽然云编译不需要梯子，不过你使用SSH连接、下载固件、打开github网页也是需要梯子比较好的（没有也行，比较卡就是）
 
 #
 #
