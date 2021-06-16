@@ -60,8 +60,6 @@ jobs:
         echo "REGULAR_UPDATE=${REGULAR_UPDATE}" >> $GITHUB_ENV
         echo "CangKu=${Apidz##*/}" >> $GITHUB_ENV
         echo "Modelfile=${{matrix.target}}" >> $GITHUB_ENV
-        echo "Updete_firmware=${Updete_firmware}" >> $GITHUB_ENV
-        echo "Extension=${Extension}" >> $GITHUB_ENV
 
     - name: 公 告
       run: |
@@ -205,8 +203,10 @@ jobs:
         if [ "${REGULAR_UPDATE}" == "true" ]; then
           source "${PATH1}/upgrade.sh" && Diy_Part2 > /dev/null 2>&1
         fi
-        source "${PATH1}/upgrade.sh" > /dev/null 2>&1
-        source "${PATH1}/common.sh" && Diy_xinxi
+        if [ "${BY_INFORMATION}" == "true" ]; then
+          source "${PATH1}/upgrade.sh" > /dev/null 2>&1
+          source "${PATH1}/common.sh" && Diy_xinxi
+        fi
 
     - name: 下载软件包
       id: package
