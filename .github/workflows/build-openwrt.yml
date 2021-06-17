@@ -37,7 +37,7 @@ jobs:
       matrix:
         target: [Project_source]
 
-        # [Lede_source,Lienol_source,Project_source,Spirit_source]
+        # [Lede_source,Lienol_source]
 
     steps:
     - name: 准备结束
