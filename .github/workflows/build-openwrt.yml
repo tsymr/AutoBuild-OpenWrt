@@ -75,13 +75,9 @@ jobs:
           echo "ZZZ=package/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
           echo "CODE=Lienol" >> $GITHUB_ENV
           echo "OpenWrt_name=19.07" >> $GITHUB_ENV
-        elif [[ "${REPO_BRANCH}" == "openwrt-18.06-k5.4" ]]; then
+        elif [[ "${REPO_BRANCH}" == "21.02" ]]; then
           echo "ZZZ=package/emortal/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
           echo "CODE=Project" >> $GITHUB_ENV
-          echo "OpenWrt_name=18.06" >> $GITHUB_ENV
-        elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
-          echo "ZZZ=package/emortal/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
-          echo "CODE=Spirit" >> $GITHUB_ENV
           echo "OpenWrt_name=21.02" >> $GITHUB_ENV
         fi
         if [ -n "$(ls -A build/common/0602gg 2>/dev/null)" ]; then
@@ -143,16 +139,11 @@ jobs:
           cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
           cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
           cp -Rf "${Home}"/build/common/LIENOL/patches/* "${PATH1}/patches"
-        elif [[ "${REPO_BRANCH}" == "openwrt-18.06-k5.4" ]]; then
+        elif [[ "${REPO_BRANCH}" == "21.02" ]]; then
           source "${PATH1}/common.sh" && Diy_1806
           cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
           cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
           cp -Rf "${Home}"/build/common/PROJECT/patches/* "${PATH1}/patches"
-        elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
-          source "${PATH1}/common.sh" && Diy_2102
-          cp -Rf "${Home}"/build/common/SPIRIT/files "${Home}"
-          cp -Rf "${Home}"/build/common/SPIRIT/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/SPIRIT/patches/* "${PATH1}/patches"
         fi
         source "${PATH1}/common.sh" && Diy_all
         /bin/bash "${PATH1}/$DIY_PART_SH"
@@ -164,9 +155,6 @@ jobs:
         fi
         if [ -n "$(ls -A "${PATH1}/patches" 2>/dev/null)" ]; then
           find "${PATH1}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
-        fi
-        if [[ "${REPO_BRANCH}" =~ (21.02|openwrt-21.02) ]]; then
-          /bin/bash ./Convert.sh
         fi
         ./scripts/feeds update -a && ./scripts/feeds install -a
         [ -e "$PATH1/$CONFIG_FILE" ] && mv "$PATH1/$CONFIG_FILE" .config
