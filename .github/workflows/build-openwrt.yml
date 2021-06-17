@@ -140,7 +140,7 @@ jobs:
           cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
           cp -Rf "${Home}"/build/common/LIENOL/patches/* "${PATH1}/patches"
         elif [[ "${REPO_BRANCH}" == "21.02" ]]; then
-          source "${PATH1}/common.sh" && Diy_1806
+          source "${PATH1}/common.sh" && Diy_2102
           cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
           cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
           cp -Rf "${Home}"/build/common/PROJECT/patches/* "${PATH1}/patches"
