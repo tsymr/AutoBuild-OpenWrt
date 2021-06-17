@@ -35,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        target: [Project_source]
+        target: [Project_source,Lienol_source]
 
         # [Lede_source,Lienol_source]
 
