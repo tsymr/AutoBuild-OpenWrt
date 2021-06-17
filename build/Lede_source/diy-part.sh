@@ -18,8 +18,6 @@ sed -i "s/OpenWrt /${Author} Compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt 
 
 sed -i "/uci commit system/i\uci set system.@system[0].hostname='x86-64-OpenWrt'" $ZZZ            # 修改主机名称为x86-64-OpenWrt
 
-#sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0/$1$PhflQnJ1$yamWfH5Mphs4hXV7UXWQ21:18725/g' $ZZZ  # 替换密码（要替换密码就不能设置密码为空）
-
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                                            # 设置密码为空
 
 #sed -i 's/PATCHVER:=5.10/PATCHVER:=5.4/g' target/linux/x86/Makefile                              # 修改内核版本为5.4,默认内核5.10
