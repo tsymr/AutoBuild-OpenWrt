@@ -76,7 +76,7 @@ jobs:
           echo "CODE=Lienol" >> $GITHUB_ENV
           echo "OpenWrt_name=19.07" >> $GITHUB_ENV
         elif [[ "${REPO_BRANCH}" == "21.02" ]]; then
-          echo "ZZZ=package/emortal/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
+          echo "ZZZ=package/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
           echo "CODE=Project" >> $GITHUB_ENV
           echo "OpenWrt_name=21.02" >> $GITHUB_ENV
         fi
