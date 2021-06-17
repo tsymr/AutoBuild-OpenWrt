@@ -75,10 +75,6 @@ jobs:
           echo "ZZZ=package/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
           echo "CODE=Lienol" >> $GITHUB_ENV
           echo "OpenWrt_name=19.07" >> $GITHUB_ENV
-        elif [[ "${REPO_BRANCH}" == "21.02" ]]; then
-          echo "ZZZ=package/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
-          echo "CODE=Project" >> $GITHUB_ENV
-          echo "OpenWrt_name=21.02" >> $GITHUB_ENV
         fi
         if [ -n "$(ls -A build/common/0602gg 2>/dev/null)" ]; then
           source build/common/common.sh && Diy_gonggao
@@ -139,11 +135,6 @@ jobs:
           cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
           cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
           cp -Rf "${Home}"/build/common/LIENOL/patches/* "${PATH1}/patches"
-        elif [[ "${REPO_BRANCH}" == "21.02" ]]; then
-          source "${PATH1}/common.sh" && Diy_2102
-          cp -Rf "${Home}"/build/common/PROJECT/files "${Home}"
-          cp -Rf "${Home}"/build/common/PROJECT/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/PROJECT/patches/* "${PATH1}/patches"
         fi
         source "${PATH1}/common.sh" && Diy_all
         /bin/bash "${PATH1}/$DIY_PART_SH"
