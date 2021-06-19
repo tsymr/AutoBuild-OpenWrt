@@ -215,9 +215,7 @@ jobs:
       id: organizer
       run: |
         cd openwrt
-        if [[ "${REGULAR_UPDATE}" == "true" ]]; then
-          source "${PATH1}/upgrade.sh" && Diy_Part3
-        fi
+        mv bin/targets/*/* "${Home}"/upgrade
         cd bin && mkdir config
         find ./ -name "*config.buildinfo*" | xargs -i mv -f {} config
         if [ -n "$(ls -A "targets/x86" 2>/dev/null)" ]; then
@@ -257,16 +255,6 @@ jobs:
         echo "::warning file=cowtransfer.com::$(cat cowtransfer.log | grep https)"
         ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
         echo "::warning file=wetransfer.com::$(cat wetransfer.log | grep https)"
-
-    - name: 把定时更新固件发布到云端
-      uses: softprops/action-gh-release@v1
-      if: steps.organizer.outputs.status == 'success' && env.REGULAR_UPDATE == 'true'
-      env:
-        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
-      with:
-        name: update_Firmware
-        tag_name: AutoUpdate
-        files: openwrt/bin/Firmware/*
     
     - name: 整理发布信息
       if: steps.organizer.outputs.status == 'success' && env.UPLOAD_RELEASE == 'true'
@@ -287,6 +275,22 @@ jobs:
         token: ${{ secrets.REPO_TOKEN }}
         bodyFile: "update_log.txt"
         artifacts: "${{ env.FIRMWARE }}/*"
+        
+    - name: 整理定时更新需要的固件
+       cd openwrt
+        if [[ "${REGULAR_UPDATE}" == "true" ]]; then
+          source "${PATH1}/upgrade.sh" && Diy_Part3
+        fi
+        
+    - name: 把定时更新固件发布到云端
+      uses: softprops/action-gh-release@v1
+      if: steps.organizer.outputs.status == 'success' && env.REGULAR_UPDATE == 'true'
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+      with:
+        name: update_Firmware
+        tag_name: AutoUpdate
+        files: openwrt/bin/Firmware/*
     
     - name: 微信通知
       uses: emon100/Action-Serverchan@v2
