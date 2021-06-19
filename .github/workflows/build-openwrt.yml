@@ -77,7 +77,7 @@ jobs:
           echo "CODE=Lienol" >> $GITHUB_ENV
           echo "OpenWrt_name=19.07" >> $GITHUB_ENV
         fi
-        if [ -n "$(ls -A build/common/0602gg 2>/dev/null)" ]; then
+        if [ -n "$(ls -A build/common/0620gg 2>/dev/null)" ]; then
           source build/common/common.sh && Diy_gonggao
         else
           source build/common/common.sh && Diy_tongzhi
