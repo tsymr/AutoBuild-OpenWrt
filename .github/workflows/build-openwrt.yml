@@ -215,7 +215,7 @@ jobs:
       id: organizer
       run: |
         cd openwrt
-        mv bin/targets/*/* "${Home}"/upgrade
+        cp -Rf bin/targets/*/* "${Home}"/upgrade
         cd bin && mkdir config
         find ./ -name "*config.buildinfo*" | xargs -i mv -f {} config
         if [ -n "$(ls -A "targets/x86" 2>/dev/null)" ]; then
