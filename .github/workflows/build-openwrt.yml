@@ -217,7 +217,7 @@ jobs:
         cd openwrt
         cp -Rf bin/targets/*/* "${Home}"/upgrade
         cd bin && mkdir config
-        cp -Rf bin/targets/*/*/config.buildinfo "${Home}"/config/config.txt
+        cp -Rf targets/*/*/config.buildinfo "${Home}"/bin/config/config.txt
         find ./ -name "*.buildinfo*" | xargs -i mv -f {} config
         if [ -n "$(ls -A "targets/x86" 2>/dev/null)" ]; then
           find ./ -name "*kernel*" | xargs -i rm -rf {}
