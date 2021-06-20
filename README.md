@@ -4,7 +4,7 @@
 - Lienol_source=19.07=4.14
 - openwrt_amlogic=N1和晶晨系列CPU专用
 
-- openwrt_amlogic文件夹，编译S905x3, S905x2, S922x, S905x, S905d, s912自动打包需要的固件。《[说明](https://github.com/danshui-git/shuoming/blob/master/Amlogic.md)》
+- openwrt_amlogic文件夹，编译S905x3, S905x2, S922x, S905x, S905d, s912自动打包需要的固件《[说明](https://github.com/danshui-git/shuoming/blob/master/Amlogic.md)》
 
 - 启动教程视频，mp4格式，存网盘了，需要的自己下载。《[谷歌云](https://drive.google.com/drive/folders/1WEUtVfiVtR5lyG8aX4RcDGdUPV6uMlxt?usp=sharing)》、《[百度（密码：apek）](https://pan.baidu.com/s/1RVi4nN8Y1ak9LTWzhV5bSQ)》、《[微云](https://share.weiyun.com/33SgJdCO)》
 
