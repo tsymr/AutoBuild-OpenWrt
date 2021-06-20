@@ -2,7 +2,7 @@
 
 - Lede_source=18.06=5.10
 - Lienol_source=19.07=4.14
-- openwrt_amlogic 编译晶晨系列CPU专用
+- openwrt_amlogic=N1和晶晨系列CPU专用
 
 - 《[如何在本地Ubuntu一键无脑编译](https://github.com/danshui-git/shuoming/blob/master/bendi.md)》
  
