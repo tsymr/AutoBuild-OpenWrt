@@ -43,7 +43,7 @@ for x in $packages; do
     sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
 done
 
-# 修改一些代码适配amlogic
+# luci-app-cpufreq修改一些代码适配amlogic
 sed -i ' s/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g ' package/lean/luci-app-cpufreq/Makefile
 
 # 为 armvirt 添加 autocore 支持
