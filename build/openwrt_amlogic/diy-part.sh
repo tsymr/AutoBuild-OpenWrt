@@ -15,7 +15,7 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/M
 
 sed -i "s/OpenWrt /${Author} Compiled in $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" $ZZZ          # 增加个性名字${Author}默认为你的github账号
 
-sed -i "/uci commit system/i\uci set system.@system[0].hostname='x86-64-OpenWrt'" $ZZZ            # 修改主机名称为x86-64-OpenWrt
+sed -i "/uci commit system/i\uci set system.@system[0].hostname='Phicomm-N1'" $ZZZ                # 修改主机名称为Phicomm-N1
 
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                                            # 设置密码为空
 
