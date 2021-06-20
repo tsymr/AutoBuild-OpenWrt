@@ -23,13 +23,10 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                          
 
 
 # 设置打包固件的机型，内核
-# amlogic_modelw为机型设置，多机型需要中间加‘_’间隔，比如s922x_s912
-# amlogic_kernel为内核设置，多内核需要中间加‘_’间隔，比如5.12.12_5.4.127
 cat >$GITHUB_WORKSPACE/amlogic_openwrt <<-EOF
 amlogic_model=s905x3_s905x2_s905x_s905d_s922x_s912
 amlogic_kernel=5.12.12_5.4.127
 EOF
-
 
 # 修复NTFS格式优盘不自动挂载
 packages=" \
