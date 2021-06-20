@@ -213,7 +213,7 @@ jobs:
         
     - name: amlogic系列自动打包程序
       run: |
-       source "${PATH1}/upgrade.sh" && Diy_amlogic
+       source "${PATH1}/common.sh" && Diy_amlogic
     
     - name: 整理固件文件夹
       id: organizer
