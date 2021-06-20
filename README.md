@@ -6,7 +6,7 @@
 
 - openwrt_amlogic文件夹，编译S905x3, S905x2, S922x, S905x, S905d, s912自动打包需要的固件《[说明](https://github.com/danshui-git/shuoming/blob/master/Amlogic.md)》
 
-- 源码已直接打入了常用插件了，请选确定我仓库有没有您需要的插件，再来自行添加所需差 【[插件包](https://github.com/281677160/openwrt-package)】
+- 源码已直接打入了常用插件了，请选确定我仓库有没有您需要的插件，再来自行添加所需插件 【[插件包](https://github.com/281677160/openwrt-package)】
 
 - 启动教程视频，mp4格式，存网盘了，需要的自己下载。《[谷歌云](https://drive.google.com/drive/folders/1WEUtVfiVtR5lyG8aX4RcDGdUPV6uMlxt?usp=sharing)》、《[百度（密码：apek）](https://pan.baidu.com/s/1RVi4nN8Y1ak9LTWzhV5bSQ)》、《[微云](https://share.weiyun.com/33SgJdCO)》
 
