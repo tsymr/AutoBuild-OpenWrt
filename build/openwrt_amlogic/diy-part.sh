@@ -47,6 +47,13 @@ for x in $packages; do
 done
 
 
+#修改一些代码适配
+sed -i ' s/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g ' package/lean/luci-app-cpufreq/Makefile
+
+#为 armvirt 添加 autocore 支持
+sed -i ' s/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g ' package/lean/autocore/Makefile
+
+
 # 修改插件名字
 sed -i 's/"aMule设置"/"电驴下载"/g' `grep "aMule设置" -rl ./`
 sed -i 's/"网络存储"/"存储"/g' `grep "网络存储" -rl ./`
