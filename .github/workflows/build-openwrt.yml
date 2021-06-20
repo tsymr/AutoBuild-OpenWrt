@@ -210,6 +210,11 @@ jobs:
       with:
         name: filename+ipk_${{ env.CODE }}_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
         path: openwrt/bin
+        
+    - name: amlogic系列自动打包程序
+      if: env.Modelfile == 'openwrt_amlogic'
+      run: |
+       source "${PATH1}/upgrade.sh" && Diy_amlogic
     
     - name: 整理固件文件夹
       id: organizer
