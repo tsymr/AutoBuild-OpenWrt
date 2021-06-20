@@ -31,6 +31,8 @@ amlogic_model=s905x3_s905x2_s905x_s905d_s922x_s912
 amlogic_kernel=5.12.12_5.4.127
 " > $GITHUB_WORKSPACE/amlogic_openwrt
 
+
+# 修复NTFS格式优盘不自动挂载
 packages=" \
 brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
 kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs ntfs-3g \
