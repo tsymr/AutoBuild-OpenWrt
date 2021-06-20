@@ -212,7 +212,6 @@ jobs:
         path: openwrt/bin
         
     - name: amlogic系列自动打包程序
-      if: env.Modelfile == 'openwrt_amlogic'
       run: |
        source "${PATH1}/upgrade.sh" && Diy_amlogic
     
