@@ -23,6 +23,15 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                          
 #sed -i 's/PATCHVER:=5.10/PATCHVER:=5.4/g' target/linux/x86/Makefile                              # 修改内核版本为5.4,默认内核5.10
 
 
+# 设置打包固件的机型，内核
+# amlogic_modelw为机型设置，多机型需要中间加‘_’间隔，比如s922x_s912
+# amlogic_kernel为内核设置，多内核需要中间加‘_’间隔，比如5.12.12_5.4.127
+echo "
+amlogic_model=s905x3_s905x2_s905x_s905d_s922x_s912
+amlogic_kernel=5.12.12_5.4.127
+" > $GITHUB_WORKSPACE/amlogic_openwrt
+
+
 # 修改插件名字
 sed -i 's/"aMule设置"/"电驴下载"/g' `grep "aMule设置" -rl ./`
 sed -i 's/"网络存储"/"存储"/g' `grep "网络存储" -rl ./`
