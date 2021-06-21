@@ -211,15 +211,13 @@ jobs:
       with:
         name: filename+ipk_${{ env.CODE }}_${{ env.TARGET_PROFILE }}_${{ env.Compile_Date }}
         path: openwrt/bin
-        
-    - name: amlogic系列自动打包程序
-      if: env.Modelfile == 'openwrt_amlogic'
-      run: |
-       source "${PATH1}/common.sh" && Diy_amlogic
     
     - name: 整理固件文件夹
       id: organizer
       run: |
+        if [ "${Modelfile}" == "openwrt_amlogic" ]; then
+          source "${PATH1}/common.sh" && Diy_amlogic
+        fi
         cd openwrt
         cp -Rf bin/targets/*/* "${Home}"/upgrade
         cd bin && mkdir config
