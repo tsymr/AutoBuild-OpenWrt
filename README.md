@@ -56,6 +56,8 @@
 《[微信通知跟自动发布固功能密匙获取跟使用教程](https://github.com/danshui-git/shuoming/blob/master/ms.md)》
 《[Telegram机器人推送信息教程](https://github.com/danshui-git/shuoming/blob/master/bot.md)》
 《[编译时设置overlay空间容量](https://github.com/danshui-git/shuoming/blob/master/overlay.md)》
+《[编译出错时查看日志方法](https://github.com/danshui-git/shuoming/blob/master/errors.md)》
+
 #
 
 #
