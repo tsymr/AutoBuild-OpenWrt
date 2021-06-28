@@ -117,9 +117,7 @@ jobs:
         mv -f "${Home}"/build/common/Convert.sh "${Home}"
         mv -f "${Home}"/build/common/*.sh "${PATH1}"
         source "${PATH1}/common.sh" && Diy_settings
-        if [[ "${{ github.event.inputs.ssh }}" == 'ssh' ]]; then
-          echo "SSHYC=true" >> $GITHUB_ENV
-        fi
+        [[ "${{ github.event.inputs.ssh }}" == 'ssh' ]] && echo "SSHYC=true" >> $GITHUB_ENV
         cd openwrt
         if [[ "${REPO_BRANCH}" == "master" ]]; then
           source "${PATH1}/common.sh" && Diy_lede
