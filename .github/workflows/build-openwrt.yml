@@ -138,7 +138,7 @@ jobs:
         [[ -e ${PATH1}/files ]] && cp -Rf "${PATH1}/files" "${Home}" && chmod -R +x ${Home}/files
         [[ -e ${PATH1}/patches ]] && find "${PATH1}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        [[ -e "$PATH1/$CONFIG_FILE" ]] && mv "$PATH1/$CONFIG_FILE" .config
+        [[ -e $PATH1/$CONFIG_FILE ]] && mv $PATH1/$CONFIG_FILE .config
         [[ "${REGULAR_UPDATE}" == "true" ]] && source "${PATH1}/upgrade.sh" && Diy_Part1
 
     - name: SSH远程连接（配置固件）
