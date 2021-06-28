@@ -85,10 +85,8 @@ jobs:
 
     - name: 电报机器人信息通知
       run: |
-        if [[ "${SERVERCHAN_SCKEY}" == "true" ]]; then
-          curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
-          您正在使用【${{matrix.target}}】文件夹编译固件中(${{env.CangKu}}仓库的#${{env.Run_number}}号),请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
-        fi
+        [[ "${SERVERCHAN_SCKEY}" == "true" ]] && curl -k --data chat_id="${{ secrets.TELEGRAM_CHAT_ID }}" --data "text=🎉 主人：
+        您正在使用【${{matrix.target}}】文件夹编译固件中(${{env.CangKu}}仓库的#${{env.Run_number}}号),请耐心等待...... 😋" "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage"
 
     - name: 部署编译环境
       env:
@@ -121,9 +119,7 @@ jobs:
         mv -f "${Home}"/build/common/Convert.sh "${Home}"
         mv -f "${Home}"/build/common/*.sh "${PATH1}"
         source "${PATH1}/common.sh" && Diy_settings
-        if [[ "${{ github.event.inputs.ssh }}" == 'ssh' ]]; then
-          echo "SSHYC=true" >> $GITHUB_ENV
-        fi
+        [[ "${{ github.event.inputs.ssh }}" == 'ssh' ]] && echo "SSHYC=true" >> $GITHUB_ENV
         cd openwrt
         if [[ "${REPO_BRANCH}" == "master" ]]; then
           source "${PATH1}/common.sh" && Diy_lede
@@ -138,20 +134,12 @@ jobs:
         fi
         source "${PATH1}/common.sh" && Diy_all
         /bin/bash "${PATH1}/$DIY_PART_SH"
-        if [ -n "$(ls -A "${PATH1}/diy" 2>/dev/null)" ]; then
-          cp -Rf "${PATH1}"/diy/* "${Home}"
-        fi
-        if [ -n "$(ls -A "${PATH1}/files" 2>/dev/null)" ]; then
-          cp -Rf "${PATH1}/files" "${Home}" && chmod -R +x ${Home}/files
-        fi
-        if [ -n "$(ls -A "${PATH1}/patches" 2>/dev/null)" ]; then
-          find "${PATH1}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
-        fi
+        [[ -e ${PATH1}/diy ]] && cp -Rf "${PATH1}"/diy/* "${Home}"
+        [[ -e ${PATH1}/files ]] && cp -Rf "${PATH1}/files" "${Home}" && chmod -R +x ${Home}/files
+        [[ -e ${PATH1}/patches ]] && find "${PATH1}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
         ./scripts/feeds update -a && ./scripts/feeds install -a
-        [ -e "$PATH1/$CONFIG_FILE" ] && mv "$PATH1/$CONFIG_FILE" .config
-        if [[ "${REGULAR_UPDATE}" == "true" ]]; then
-          source "${PATH1}/upgrade.sh" && Diy_Part1
-        fi
+        [[ -e "$PATH1/$CONFIG_FILE" ]] && mv "$PATH1/$CONFIG_FILE" .config
+        [[ "${REGULAR_UPDATE}" == "true" ]] && source "${PATH1}/upgrade.sh" && Diy_Part1
 
     - name: SSH远程连接（配置固件）
       uses: danshui-git/debugger-action@master
@@ -181,13 +169,9 @@ jobs:
       run: |
         cd openwrt
         source "${PATH1}/common.sh" && Diy_chuli > /dev/null 2>&1
-        if [ "${REGULAR_UPDATE}" == "true" ]; then
-          source "${PATH1}/upgrade.sh" && Diy_Part2 > /dev/null 2>&1
-        fi
-        if [ "${BY_INFORMATION}" == "true" ]; then
-          source "${PATH1}/upgrade.sh" > /dev/null 2>&1
-          source "${PATH1}/common.sh" && Diy_xinxi
-        fi
+        [[ "${REGULAR_UPDATE}" == "true" ]] && source "${PATH1}/upgrade.sh" && Diy_Part2 > /dev/null 2>&1
+        source "${PATH1}/upgrade.sh" > /dev/null 2>&1
+        [[ "${BY_INFORMATION}" == "true" ]] && source "${PATH1}/common.sh" && Diy_xinxi
 
     - name: 下载软件包
       id: package
@@ -216,9 +200,7 @@ jobs:
     - name: 整理固件文件夹
       id: organizer
       run: |
-        if [ "${Modelfile}" == "openwrt_amlogic" ]; then
-          source "${PATH1}/common.sh" && Diy_amlogic
-        fi
+        [[ "${Modelfile}" == "openwrt_amlogic" ]] && source "${PATH1}/common.sh" && Diy_amlogic
         cd openwrt
         cp -Rf bin/targets/*/* "${Home}"/upgrade
         cd bin && mkdir config
