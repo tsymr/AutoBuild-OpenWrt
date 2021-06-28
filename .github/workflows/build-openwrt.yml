@@ -82,6 +82,7 @@ jobs:
         else
           source build/common/common.sh && Diy_tongzhi
         fi
+        [[ ! ${BY_INFORMATION} == "true" ]] && echo "111111111111111"
 
     - name: 电报机器人信息通知
       run: |
