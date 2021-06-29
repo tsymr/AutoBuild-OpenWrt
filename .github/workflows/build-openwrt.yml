@@ -124,31 +124,13 @@ jobs:
         cd openwrt
         if [[ "${REPO_BRANCH}" == "master" ]]; then
           source "${PATH1}/common.sh" && Diy_lede
-          cp -Rf "${Home}"/build/common/LEDE/files "${Home}"
-          cp -Rf "${Home}"/build/common/LEDE/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/LEDE/patches/* "${PATH1}/patches"
         elif [[ "${REPO_BRANCH}" == "19.07" ]]; then
           source "${PATH1}/common.sh" && Diy_lienol
-          cp -Rf "${Home}"/build/common/LIENOL/files "${Home}"
-          cp -Rf "${Home}"/build/common/LIENOL/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/LIENOL/patches/* "${PATH1}/patches"
         elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
           source "${PATH1}/common.sh" && Diy_mortal
-          cp -Rf "${Home}"/build/common/MORTAL/files "${Home}"
-          cp -Rf "${Home}"/build/common/MORTAL/diy/* "${Home}"
-          cp -Rf "${Home}"/build/common/MORTAL/patches/* "${PATH1}/patches"
         fi
         source "${PATH1}/common.sh" && Diy_all
         /bin/bash "${PATH1}/$DIY_PART_SH"
-        if [ -n "$(ls -A "${PATH1}/diy" 2>/dev/null)" ]; then
-          cp -Rf "${PATH1}"/diy/* "${Home}"
-        fi
-        if [ -n "$(ls -A "${PATH1}/files" 2>/dev/null)" ]; then
-          cp -Rf "${PATH1}/files" "${Home}" && chmod -R +x ${Home}/files
-        fi
-        if [ -n "$(ls -A "${PATH1}/patches" 2>/dev/null)" ]; then
-          find "${PATH1}/patches" -type f -name '*.patch' -print0 | sort -z | xargs -I % -t -0 -n 1 sh -c "cat '%'  | patch -d './' -p1 --forward --no-backup-if-mismatch"
-        fi
         ./scripts/feeds update -a && ./scripts/feeds install -a
         mv "$PATH1/$CONFIG_FILE" .config
         if [[ "${REGULAR_UPDATE}" == "true" ]]; then
