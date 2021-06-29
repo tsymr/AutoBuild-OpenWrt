@@ -77,7 +77,7 @@ jobs:
           echo "OpenWrt_name=19.07" >> $GITHUB_ENV
         elif [[ "${REPO_BRANCH}" == "openwrt-21.02" ]]; then
           echo "ZZZ=package/emortal/default-settings/files/zzz-default-settings" >> $GITHUB_ENV
-          echo "CODE=mortal" >> $GITHUB_ENV
+          echo "CODE=Mortal" >> $GITHUB_ENV
           echo "OpenWrt_name=21.02" >> $GITHUB_ENV
         fi
         if [ -n "$(ls -A build/common/0626gg 2>/dev/null)" ]; then
