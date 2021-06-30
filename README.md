@@ -15,6 +15,8 @@
  
 - 《[把定时更新插件编译进固件的说明](https://github.com/danshui-git/shuoming/blob/master/%E5%AE%9A%E6%97%B6%E6%9B%B4%E6%96%B0%E6%8F%92%E4%BB%B6.md)》
 
+- 《[Telegram聊天吹水群](https://t.me/heiheiheio)》
+
 #
 ## 编译教程：
 ### - 以下的说明教程都是在我另外的仓库的，查看说明时候就跳转到另外仓库了，浏览器回退就会回来，别拉取到我说明的仓库，注意了！
