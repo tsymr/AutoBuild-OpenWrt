@@ -2,6 +2,7 @@
 
 - Lede_source=18.06=5.10
 - Lienol_source=19.07=4.14
+- Mortal_source=21.02=5.4
 - openwrt_amlogic=N1和晶晨系列CPU专用
 
 - openwrt_amlogic文件夹，编译S905x3, S905x2, S922x, S905x, S905d, s912自动打包您所需的固件《[说明](https://github.com/danshui-git/shuoming/blob/master/Amlogic.md)》
