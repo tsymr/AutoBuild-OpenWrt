@@ -19,7 +19,7 @@ sed -i "/uci commit system/i\uci set system.@system[0].hostname='Phicomm-N1'" $Z
 
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' $ZZZ                                                            # 设置密码为空
 
-#sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/g' target/linux/armvirt/Makefile                          # 修改内核版本为5.10,默认内核5.4
+#sed -i 's/PATCHVER:=5.4/PATCHVER:=5.10/g' target/linux/armvirt/Makefile                          # 默认内核5.4，修改内核为5.10
 
 
 # 设置打包固件的机型，内核组合（请看说明）
