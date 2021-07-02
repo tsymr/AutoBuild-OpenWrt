@@ -111,7 +111,7 @@ jobs:
       run: |
         git clone -b "$REPO_BRANCH" --single-branch "$REPO_URL" openwrt
         cd openwrt
-        ./scripts/feeds clean && ./scripts/feeds update -a > /dev/null 2>&1
+        ./scripts/feeds update -a > /dev/null 2>&1
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         echo "Home=${GITHUB_WORKSPACE}/openwrt" >> $GITHUB_ENV
         echo "PATH1=${GITHUB_WORKSPACE}/openwrt/build/${{matrix.target}}" >> $GITHUB_ENV
@@ -133,7 +133,8 @@ jobs:
         fi
         source "${PATH1}/common.sh" && Diy_all
         /bin/bash "${PATH1}/$DIY_PART_SH"
-        ./scripts/feeds update -a && ./scripts/feeds install -a
+        ./scripts/feeds update -a > /dev/null 2>&1
+        ./scripts/feeds install -a && ./scripts/feeds install -a
         mv "$PATH1/$CONFIG_FILE" .config
         if [[ "${REGULAR_UPDATE}" == "true" ]]; then
           source "${PATH1}/upgrade.sh" && Diy_Part1
