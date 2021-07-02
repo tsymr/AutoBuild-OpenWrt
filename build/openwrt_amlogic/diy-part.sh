@@ -29,27 +29,6 @@ amlogic_kernel=5.12.12_5.4.127
 rootfs_size=1024
 EOF
 
-# 修复NTFS格式优盘不自动挂载
-packages=" \
-brcmfmac-firmware-43430-sdio brcmfmac-firmware-43455-sdio kmod-brcmfmac wpad \
-kmod-fs-ext4 kmod-fs-vfat kmod-fs-exfat dosfstools e2fsprogs ntfs-3g \
-kmod-usb2 kmod-usb3 kmod-usb-storage kmod-usb-storage-extras kmod-usb-storage-uas \
-kmod-usb-net kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152 \
-blkid lsblk parted fdisk cfdisk losetup resize2fs tune2fs pv unzip \
-lscpu htop iperf3 curl lm-sensors python3 luci-app-amlogic
-"
-sed -i '/FEATURES+=/ { s/cpiogz //; s/ext4 //; s/ramdisk //; s/squashfs //; }' \
-    target/linux/armvirt/Makefile
-for x in $packages; do
-    sed -i "/DEFAULT_PACKAGES/ s/$/ $x/" target/linux/armvirt/Makefile
-done
-
-# luci-app-cpufreq修改一些代码适配amlogic
-sed -i 's/LUCI_DEPENDS.*/LUCI_DEPENDS:=\@\(arm\|\|aarch64\)/g' package/lean/luci-app-cpufreq/Makefile
-
-# 为 armvirt 添加 autocore 支持
-sed -i 's/TARGET_rockchip/TARGET_rockchip\|\|TARGET_armvirt/g' package/lean/autocore/Makefile
-
 
 # 修改插件名字
 sed -i 's/"aMule设置"/"电驴下载"/g' `grep "aMule设置" -rl ./`
