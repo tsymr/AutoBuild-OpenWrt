@@ -4,6 +4,10 @@
 # 自行拉取插件之前请SSH连接进入固件配置里面确认过没有你要的插件再单独拉取你需要的插件
 # 不要一下就拉取别人一个插件包N多插件的，多了没用，增加编译错误，自己需要的才好
 
+find . -name 'luci-app-argon-config' -o -name 'luci-theme-argon'  | xargs -i rm -rf {}
+git clone -b 18.06 https://github.com/lee29/luci-theme-argon package/luci-theme-argon
+git clone https://github.com/lee29/luci-app-argon-config package/luci-app-argon-config
+
 
 sed -i "/uci commit fstab/a\uci commit network" $ZZZ
 sed -i "/uci commit network/i\uci set network.lan.ipaddr='192.168.2.2'" $ZZZ                      # IPv4 地址(openwrt后台地址)
