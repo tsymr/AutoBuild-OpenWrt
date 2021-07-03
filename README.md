@@ -1,6 +1,7 @@
 # 择要
 
 - Lede_source=18.06=5.10
+- [Lede_source](https://github.com/coolsnowwolf/lede)=18.06=5.10
 - Lienol_source=19.07=4.14
 - Mortal_source=21.02=5.4
 - openwrt_amlogic=N1和晶晨系列CPU盒子专用
