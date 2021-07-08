@@ -271,15 +271,15 @@ jobs:
        cd openwrt
        source "${PATH1}/upgrade.sh" && Diy_Part3
         
-    - name: 把定时更新固件发布到云端
-      uses: softprops/action-gh-release@v1
-      if: steps.organizer.outputs.status == 'success' && env.REGULAR_UPDATE == 'true'
-      env:
-        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
-      with:
-        name: update_Firmware
-        tag_name: AutoUpdate
-        files: openwrt/bin/Firmware/*
+#     - name: 把定时更新固件发布到云端
+#       uses: softprops/action-gh-release@v1
+#       if: steps.organizer.outputs.status == 'success' && env.REGULAR_UPDATE == 'true'
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
+#       with:
+#         name: update_Firmware
+#         tag_name: AutoUpdate
+#         files: openwrt/bin/Firmware/*
     
     - name: 电报机器人信息通知
       run: |
